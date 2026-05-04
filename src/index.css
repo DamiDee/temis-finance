@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Reset ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+  color: #1e293b;
+  overflow-x: hidden;
+}
+
+/* ─── Selection ──────────────────────────────────────────── */
+::selection {
+  background: rgba(212, 160, 23, 0.25);
+  color: #125c2d;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f0fdf5; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1a7a3c, #D4A017);
+  border-radius: 3px;
+}
+
+/* ─── Green Glass Card ───────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(26, 122, 60, 0.12);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+}
+
+/* ─── Dark Glass (for hero) ──────────────────────────────── */
+.glass-dark {
+  background: rgba(13, 77, 36, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ─── Gold Text Gradient ─────────────────────────────────── */
+.gold-text {
+  background: linear-gradient(135deg, #D4A017 0%, #F0C040 50%, #D4A017 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Green Text ─────────────────────────────────────────── */
+.green-text {
+  background: linear-gradient(135deg, #125c2d 0%, #1a7a3c 50%, #23a353 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Shimmer Gold Text ──────────────────────────────────── */
+.shimmer-gold {
+  background: linear-gradient(
+    90deg,
+    #D4A017 0%,
+    #F8E060 30%,
+    #F0C040 55%,
+    #D4A017 80%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── White Shimmer (for dark backgrounds) ───────────────── */
+.shimmer-white {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #F0C040 35%,
+    #ffffff 60%,
+    #F0C040 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3.5s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Floating Label Input (light bg) ───────────────────── */
+.floating-label-group {
+  position: relative;
+}
+
+.floating-label-group input,
+.floating-label-group select,
+.floating-label-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #e2e8f0;
+  color: #1e293b;
+  font-size: 1rem;
+  padding: 1.5rem 0 0.5rem 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.floating-label-group select option {
+  background: #ffffff;
+  color: #1e293b;
+}
+
+.floating-label-group input:focus,
+.floating-label-group select:focus,
+.floating-label-group textarea:focus {
+  border-bottom-color: #1a7a3c;
+}
+
+.floating-label-group .bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #1a7a3c, #D4A017);
+  transition: width 0.4s ease;
+  border-radius: 1px;
+}
+
+.floating-label-group input:focus ~ .bar,
+.floating-label-group select:focus ~ .bar,
+.floating-label-group textarea:focus ~ .bar {
+  width: 100%;
+}
+
+.floating-label-group label {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  color: #94a3b8;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.floating-label-group.has-value label,
+.floating-label-group input:focus ~ label,
+.floating-label-group select:focus ~ label,
+.floating-label-group textarea:focus ~ label {
+  top: 0;
+  font-size: 0.72rem;
+  color: #1a7a3c;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ─── Section Divider ────────────────────────────────────── */
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #1a7a3c, #D4A017);
+  border-radius: 2px;
+}
+
+/* ─── Stat Badge ─────────────────────────────────────────── */
+.stat-badge {
+  background: rgba(26, 122, 60, 0.08);
+  border: 1px solid rgba(26, 122, 60, 0.2);
+  border-radius: 999px;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.78rem;
+  color: #1a7a3c;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+/* ─── Gold Badge ─────────────────────────────────────────── */
+.gold-badge {
+  background: rgba(212, 160, 23, 0.12);
+  border: 1px solid rgba(212, 160, 23, 0.35);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
+  color: #A07010;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* ─── Hero Slide Dot ─────────────────────────────────────── */
+.slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.35);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.slide-dot.active {
+  background: #F0C040;
+  width: 24px;
+}
+
+/* ─── Program Card Badge ─────────────────────────────────── */
+.program-badge-featured {
+  background: linear-gradient(135deg, #D4A017, #F0C040);
+  color: #1a3a0a;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+}
+
+.program-badge {
+  background: rgba(26, 122, 60, 0.08);
+  color: #1a7a3c;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(26, 122, 60, 0.2);
+}
+
+/* ─── Pulse Ring (profile picture) ──────────────────────── */
+.pulse-ring {
+  animation: pulse_ring 2.5s ease-out infinite;
+}
+
+@keyframes pulse_ring {
+  0%   { transform: scale(1);    opacity: 0.6; }
+  70%  { transform: scale(1.12); opacity: 0;   }
+  100% { transform: scale(1);    opacity: 0;   }
+}
+
+/* ─── Responsive Helpers ─────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero-headline {
+    font-size: 2.4rem !important;
+    line-height: 1.1 !important;
+  }
+  .section-headline {
+    font-size: 2rem !important;
+  }
+}
